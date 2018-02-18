@@ -4,7 +4,7 @@
     LOGO TIPO
   ==========================================-->
 
-  <a href="" class="logo">
+  <a href="inicio" class="logo">
 
     <!-- logo-mini -->
     <span class="logo-mini">

@@ -7,6 +7,8 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+  <link rel="icon" href="vistas/img/plantilla/icono-negro.png">
+
   <!-- =====================================
     PLUGINS CSS
   ==========================================-->
@@ -51,11 +53,15 @@
   BODY DOCUMENT
 ==========================================-->
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
 <?php
+
+if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
+
+/*-- Site wrapper --> */
+echo '<div class="wrapper">';
+
 /* =====================================
   CABEZOTE
 ==========================================*/
@@ -75,13 +81,17 @@
         $_GET["ruta"] == "usuarios" ||
         $_GET["ruta"] == "clientes" ||
         $_GET["ruta"] == "inmuebles" ||
-        $_GET["ruta"] == "comprobante" ||
+        $_GET["ruta"] == "comprobantes" ||
         $_GET["ruta"] == "ingresos" ||
         $_GET["ruta"] == "egresos"){
 
       include "modulos/".$_GET["ruta"].".php";
 
+    } else {
+      include "modulos/404.php";
     }
+  } else {
+    include "modulos/inicio.php";
   }
 
   /* =====================================
@@ -89,10 +99,15 @@
   ==========================================*/
   include "modulos/footer.php";
 
+  echo '</div>';
+  /*-- ./wrapper --*/
+} else {
+  include "modulos/login.php";
+}
+
 ?>
 
-</div>
-<!-- ./wrapper -->
+
 
 <script src="vistas/js/plantilla.js"></script>
 </body>
