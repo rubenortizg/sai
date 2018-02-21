@@ -14,24 +14,52 @@
 
   </section>
 
-  <!-- Main content -->
+
   <section class="content">
 
-    <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Title</h3>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                  title="Collapse">
-            <i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fa fa-times"></i></button>
-        </div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
+
+          Agregar Usuario
+        </button>
       </div>
+
       <div class="box-body">
-        Start creating your amazing application!
+
+        <table class="table table-bordered table-striped">
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Usuario</th>
+              <th>Foto</th>
+              <th>Perfil</th>
+              <th>Estado</th>
+              <th>Ultimo Login</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ruben Dario Ortiz</td>
+              <td>admin</td>
+              <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+              <td>Administrador</td>
+              <td><button class="btn btn-success btn-xs">Activado</button></td>
+              <td>2018-01-01 12:05:54</td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
