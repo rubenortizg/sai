@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +87,9 @@ echo '<div class="wrapper">';
         $_GET["ruta"] == "inmuebles" ||
         $_GET["ruta"] == "comprobantes" ||
         $_GET["ruta"] == "ingresos" ||
-        $_GET["ruta"] == "egresos"){
+        $_GET["ruta"] == "egresos" ||
+        $_GET["ruta"] == "salir"){
+    // ../lista blanca de modulos con URLs amigables
 
       include "modulos/".$_GET["ruta"].".php";
 
