@@ -4,17 +4,8 @@ CREATE TABLE `ai`. `usuarios`(
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `usuario` VARCHAR(100) NOT NULL ,
   `password` VARCHAR(300) NOT NULL ,
-  `identificacion` INT(11) NOT NULL ,
-  `tipoid` VARCHAR(100) NOT NULL ,
-  `upnombre` VARCHAR(100) NOT NULL ,
-  `usnombre` VARCHAR(100) NULL ,
-  `upapellido` VARCHAR(100) NOT NULL ,
-  `usapellido` VARCHAR(100) NULL ,
+  `nombre` VARCHAR(100) NOT NULL ,
   `correo` VARCHAR(300) NOT NULL ,
-  `cargo` VARCHAR(100) NULL ,
-  --
-  -- Nuevas columnas
-  --
   `perfil` VARCHAR(100) NOT NULL ,
   `foto` VARCHAR(100) NOT NULL ,
   `estado` INT(11) NOT NULL ,

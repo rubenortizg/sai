@@ -153,7 +153,7 @@
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="nuevoCorreo" placeholder="Ingresar correo" >
+                <input type="mail" class="form-control input-lg" name="nuevoCorreo" placeholder="Ingresar correo" >
               </div>
             </div>
             <!-- Entrada para perfil  -->
@@ -173,9 +173,9 @@
               <div class="panel">
                 SUBIR FOTO
               </div>
-              <input type="file" class="nuevaFoto" name="nuevaFoto" >
-              <p class="help-block">Peso maximo de la foto 2 MB</p>
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="file" id="nuevaFoto" name="nuevaFoto" >
+              <p class="help-block">Peso maximo de la foto 10 MB</p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
 
           </div>
@@ -189,14 +189,6 @@
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Crear usuario</button>
         </div>
-
-        <?php
-
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
-
-
-        ?>
 
       </form>
 
