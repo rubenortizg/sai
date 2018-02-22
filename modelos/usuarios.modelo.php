@@ -28,13 +28,14 @@ class  ModeloUsuarios{
 
   static public function mdlIngresarUsuario($tabla, $datos){
 
-    $sql ="INSERT INTO $tabla(nombre, usuario, password, correo, perfil) VALUES (:nombre, :usuario, :password, :correo, :perfil)";
+    $sql ="INSERT INTO $tabla(nombre, usuario, password, correo, perfil, foto) VALUES (:nombre, :usuario, :password, :correo, :perfil, :foto)";
     $stmt = Conexion::conectar()-> prepare($sql);
     $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
     $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
     $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
     $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
     $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+    $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 
     if ($stmt->execute()){
       return "ok";

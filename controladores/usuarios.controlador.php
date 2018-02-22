@@ -11,6 +11,9 @@ class ControladorUsuarios
 
     if (isset($_POST["ingUsuario"])) {
       if (preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingPassword"])) {
+
+
+        $encriptar = crypt($_POST["ingPassword"], 'N1C0l1s0rt1zL1v3r4M1r71nN1n1Gu713rr2zs0211C0nS712z1L1v3rd331ñ0nR5B3nD1r0r71zM1r7n0r$iz');
         $tabla ="usuarios";
 
         $item = "usuario";
@@ -18,7 +21,7 @@ class ControladorUsuarios
 
         $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
 
-        if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]) {
+        if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar) {
 
           $_SESSION["iniciarSesion"] = "ok";
 
@@ -45,8 +48,10 @@ class ControladorUsuarios
           preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
 
             /* =====================================
-              VALIDAR USUARIO
+              VALIDAR IMAGEN
             ========================================== */
+
+            $ruta ="";
 
             if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
 
@@ -90,36 +95,42 @@ class ControladorUsuarios
 
             }
 
-            // $tabla = "usuarios";
-            //
-            // $datos = array( "nombre" => $_POST["nuevoNombre"],
-            //                 "usuario" => $_POST["nuevoUsuario"],
-            //                 "password" => $_POST["nuevoPassword"],
-            //                 "correo" => $_POST["nuevoCorreo"],
-            //                 "perfil" => $_POST["nuevoPerfil"]);
-            //
-            //
-            // $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-            //
-            // if($respuesta == "ok"){
-            //
-            //   echo '<script>
-            //     swal({
-            //       type: "success",
-            //       title: "¡El usuario ha sido guardado correctamente!",
-            //       showConfirmButton: true,
-            //       confirmButtonText: "Cerrar",
-            //       closeOnConfirm: false
-            //
-            //     }).then((result)=>{
-            //
-            //       if(result.value){
-            //         window.location = "usuarios";
-            //       }
-            //     });
-            //   </script>';
-            //
-            // }
+            /* =====================================
+              VALIDAR USUARIO
+            ========================================== */
+
+            $tabla = "usuarios";
+            $encriptar = crypt($_POST["nuevoPassword"], 'N1C0l1s0rt1zL1v3r4M1r71nN1n1Gu713rr2zs0211C0nS712z1L1v3rd331ñ0nR5B3nD1r0r71zM1r7n0r$iz');
+
+            $datos = array( "nombre" => $_POST["nuevoNombre"],
+                            "usuario" => $_POST["nuevoUsuario"],
+                            "password" => $encriptar,
+                            "correo" => $_POST["nuevoCorreo"],
+                            "perfil" => $_POST["nuevoPerfil"],
+                            "foto" => $ruta);
+
+
+            $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+
+            if($respuesta == "ok"){
+
+              echo '<script>
+                swal({
+                  type: "success",
+                  title: "¡El usuario ha sido guardado correctamente!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+
+                }).then((result)=>{
+
+                  if(result.value){
+                    window.location = "usuarios";
+                  }
+                });
+              </script>';
+
+            }
 
 
       } else {
