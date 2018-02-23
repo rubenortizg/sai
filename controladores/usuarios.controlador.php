@@ -158,4 +158,18 @@ class ControladorUsuarios
       }
     }
   }
+
+  /* =====================================
+    MOSTRAR USUARIO
+  ========================================== */
+  
+  static public function ctrMostrarUsuario($item, $valor){
+
+    $tabla = "usuarios";
+
+    $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+
+    return $respuesta;
+
+  }
 }
