@@ -1,93 +1,136 @@
-/* =====================================
-  SUBIENDO FOTO USUARIO
-==========================================*/
-
+/*=============================================
+SUBIENDO LA FOTO DEL USUARIO
+=============================================*/
 $(".nuevaFoto").change(function(){
 
-  var imagen = this.files[0];
+	var imagen = this.files[0];
 
-  // validacion formato de la imagen jpeg o png
-  if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
 
-    $(".nuevaFoto").val("");
+  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
 
-    swal({
-      title: "Error al subir la imagen",
-      text: "¡La imagen debe estar en formato JPG o PNG!",
-      type: "error",
-      confirmButtonText: "Cerrar",
+  		$(".nuevaFoto").val("");
 
-    });
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
 
-  } else if (imagen["size"] > 2000000) {
+  	}else if(imagen["size"] > 2000000){
 
-    $(".nuevaFoto").val("");
+  		$(".nuevaFoto").val("");
 
-    swal({
-      title: "Error al subir la imagen",
-      text: "¡La imagen no debe pesar mas de 2MB!",
-      type: "error",
-      confirmButtonText: "Cerrar",
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
 
-    });
+  	}else{
 
-  } else {
+  		var datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagen);
 
-    var datosImagen = new FileReader;
-    datosImagen.readAsDataURL(imagen);
+  		$(datosImagen).on("load", function(event){
 
-    $(datosImagen).on("load", function(event){
+  			var rutaImagen = event.target.result;
 
-      var rutaImagen = event.target.result;
+  			$(".previsualizar").attr("src", rutaImagen);
 
-      $(".previsualizar").attr("src", rutaImagen);
+  		})
 
-    })
-  }
+  	}
+})
+
+/*=============================================
+EDITAR USUARIO
+=============================================*/
+$(".tablas").on("click", ".btnEditarUsuario", function(){
+
+	var idUsuario = $(this).attr("idUsuario");
+
+	var datos = new FormData();
+	datos.append("idUsuario", idUsuario);
+
+	$.ajax({
+
+		url:"ajax/usuarios.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+
+			$("#editarNombre").val(respuesta["nombre"]);
+			$("#editarUsuario").val(respuesta["usuario"]);
+			$("#editarCorreo").val(respuesta["correo"]);
+			$("#editarPerfil").html(respuesta["perfil"])
+			/* Perfil actual */;
+			$("#editarPerfil").val(respuesta["perfil"]);
+			/* Foto actual */
+			$("#fotoActual").val(respuesta["foto"]);
+			/* Password actual */
+			$("#passwordActual").val(respuesta["password"]);
+
+			if(respuesta["foto"] != ""){
+
+				$(".previsualizar").attr("src", respuesta["foto"]);
+
+			}
+
+		}
+
+	});
 
 })
 
-/* =====================================
-  EDITAR USUARIO
-==========================================*/
+/*=============================================
+ACTIVAR USUARIO
+=============================================*/
+$(".tablas").on("click", ".btnActivar", function(){
 
-$(".btnEditarUsuario").click(function(){
+	var idUsuario = $(this).attr("idUsuario");
+	var estadoUsuario = $(this).attr("estadoUsuario");
 
-  var idUsuario = $(this).attr("idUsuario");
+	var datos = new FormData();
+ 	datos.append("activarId", idUsuario);
+  	datos.append("activarUsuario", estadoUsuario);
 
-  var datos = new FormData();
-  datos.append("idUsuario", idUsuario);
+  	$.ajax({
 
-  $.ajax({
-
-    url: "ajax/usuarios.ajax.php",
-    method: "POST",
-    data: datos,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function(respuesta){
-
-      $("#editarNombre").val(respuesta["nombre"]);
-      $("#editarUsuario").val(respuesta["usuario"]);
-      $("#editarCorreo").val(respuesta["correo"]);
-      $("#editarPerfil").html(respuesta["perfil"]);
-      /* Perfil actual */
-      $("#editarPerfil").val(respuesta["perfil"]);
-      /* Password actual */
-      $("#passwordActual").val(respuesta["password"]);
-      /* Foto actual */
-      $("#fotoActual").val(respuesta["foto"]);
-
-      if (respuesta["foto"] != "") {
-
-        $(".previsualizar").attr("src",respuesta["foto"]);
+	  url:"ajax/usuarios.ajax.php",
+	  method: "POST",
+	  data: datos,
+	  cache: false,
+      contentType: false,
+      processData: false,
+      success: function(respuesta){
 
       }
 
-    }
+  	})
 
-  });
+  	if(estadoUsuario == 0){
+
+  		$(this).removeClass('btn-success');
+  		$(this).addClass('btn-danger');
+  		$(this).html('Desactivado');
+  		$(this).attr('estadoUsuario',1);
+
+  	}else{
+
+  		$(this).addClass('btn-success');
+  		$(this).removeClass('btn-danger');
+  		$(this).html('Activado');
+  		$(this).attr('estadoUsuario',0);
+
+  	}
 
 })
