@@ -47,12 +47,12 @@
             $item = null;
             $valor = null;
 
-            $usuarios = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+            $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
             foreach ($usuarios as $key => $value) {
 
               echo '<tr>
-                      <td>1</td>
+                      <td>'.$value["id"].'</td>
                       <td>'.$value["nombre"].'</td>
                       <td>'.$value["usuario"].'</td>';
 
@@ -65,9 +65,17 @@
                       }
 
               echo '  <td>'.$value["correo"].'</td>
-                      <td>'.$value["perfil"].'</td>
-                      <td><button class="btn btn-success btn-xs">Activado</button></td>
-                      <td>'.$value["ultimo_login"].'</td>
+                      <td>'.$value["perfil"].'</td>';
+
+                      if ($value["estado"] != 0) {
+                        echo '<td><button class="btn btn-success btn-xs">Activado</button></td>';
+                      }else {
+
+                        echo '<td><button class="btn btn-danger btn-xs">Desactivado</button></td>';
+                      }
+
+
+              echo '  <td>'.$value["ultimo_login"].'</td>
                       <td>
                         <div class="btn-group">
                           <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
@@ -226,28 +234,29 @@
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="editarNombre" value="" required>
+                <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" required>
               </div>
             </div>
             <!-- Entrada para usuario  -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="editarUsuario" value="" required>
+                <input type="text" class="form-control input-lg" id="editarUsuario" name="editarUsuario" value="" readonly>
               </div>
             </div>
             <!-- Entrada para contraseña  -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva contraseña" required>
+                <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva contraseña">
+                <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
             </div>
             <!-- Entrada para correo  -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="editarCorreo" value="" >
+                <input type="text" class="form-control input-lg" id="editarCorreo" name="editarCorreo" value="" >
               </div>
             </div>
             <!-- Entrada para perfil  -->
@@ -270,6 +279,7 @@
               <input type="file" class="nuevaFoto" name="editarFoto" >
               <p class="help-block">Peso maximo de la foto 2 MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" name="fotoActual" id="fotoActual">
             </div>
 
           </div>
@@ -284,12 +294,12 @@
           <button type="submit" class="btn btn-primary">Modificar usuario</button>
         </div>
 
-        <!-- <?php
+        <?php
 
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
+          $editarUsuario = new ControladorUsuarios();
+          $editarUsuario -> ctrEditarUsuario();
 
-        ?> -->
+        ?>
 
       </form>
 
