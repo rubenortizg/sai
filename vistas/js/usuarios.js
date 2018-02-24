@@ -134,3 +134,74 @@ $(".tablas").on("click", ".btnActivar", function(){
   	}
 
 })
+
+/*=============================================
+REVISAR SI EL USUARIO ESTA REGISTRADO
+=============================================*/
+
+$("#nuevoUsuario").change(function(){
+
+	$(".alert").remove();
+
+	var usuario = $(this).val();
+
+	var datos = new FormData();
+	datos.append("validarUsuario", usuario);
+
+	$.ajax({
+
+		url:"ajax/usuarios.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+
+			if (respuesta) {
+
+				$("#nuevoUsuario").parent().before('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
+				$("#nuevoUsuario").val("");
+
+			}
+		}
+
+	})
+
+})
+
+/*=============================================
+ELIMINAR USUARIO
+=============================================*/
+
+$(".btnEliminarUsuario").click(function(){
+
+	var idUsuario = $(this).attr("idUsuario");
+	var fotoUsuario = $(this).attr("fotoUsuario");
+	var usuario = $(this).attr("usuario");
+
+
+	swal({
+
+		title: '¿Esta seguro de borrar el usuario',
+		text: "!Si no lo esta puede cancelar la acción!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si, borrar usuario!'
+
+	}).then((result)=>{
+
+		if (result.value) {
+
+			window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&usuario="+usuario+"&fotoUsuario="+fotoUsuario;
+		}
+
+
+	})
+
+
+})
