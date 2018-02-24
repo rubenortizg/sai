@@ -193,7 +193,7 @@ $(".btnEliminarUsuario").click(function(){
 		cancelButtonText: 'Cancelar',
 		confirmButtonText: 'Si, borrar usuario!'
 
-	}).then((result)=>{
+	}).then(function(result){
 
 		if (result.value) {
 
