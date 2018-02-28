@@ -15,20 +15,26 @@ CREATE TABLE `ai`. `usuarios`(
   UNIQUE (`usuario`) ,
   UNIQUE (`identificacion`)) ENGINE = InnoDB;
 
-INSERT INTO usuarios (id, usuario, password, identificacion, tipoid, upnombre, usnombre, upapellido, usapellido, correo, cargo)
+INSERT INTO usuarios (id, usuario, password, nombre, correo, perfil, foto, estado, ultimo_login, fecha)
 VALUES (
   NULL ,
   'admin' ,
-  '35075a4b409908862828e39ea9d8467defc71285bf6299c46d869222871d4ebfd543c68a5a588374adf36d68284a2b35cb5bd77f0d3fb9b8f84b3c4287657a40' ,
-  '80241168' ,
-  'Cedula Ciudadanía' ,
-  'Ruben' ,
-  'Dario' ,
-  'Ortiz' ,
-  'Gutierrez' ,
+  '$2a$07$N1c0las19s0n1aMAr71nau21DL1kcJ8upM.N05vvL.clkPU5iZwC6' ,
+  'Ruben Darío Ortiz' ,
   'rubenortizg@gmail.com' ,
-  'Administrador'
+  'Administrador',
+  '' ,
+  '1' ,
+  '2018-02-23 18:06:30' ,
+  NULL
   );
+
+  CREATE TABLE `ai`.`categorias` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT ,
+    `categoria` VARCHAR(100) NOT NULL ,
+    `fecha` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`) ,
+    UNIQUE (`categoria`)) ENGINE = InnoDB;
 
 
   INSERT INTO usuarios (id, usuario, password, identificacion, tipoid, upnombre, usnombre, upapellido, usapellido, correo, cargo)

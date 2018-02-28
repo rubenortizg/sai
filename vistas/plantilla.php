@@ -96,6 +96,7 @@ echo '<div class="wrapper">';
     // lista blanca de modulos con URLs amigables
     if ($_GET["ruta"] == "inicio" ||
         $_GET["ruta"] == "usuarios" ||
+        $_GET["ruta"] == "categorias" ||
         $_GET["ruta"] == "clientes" ||
         $_GET["ruta"] == "inmuebles" ||
         $_GET["ruta"] == "comprobantes" ||
@@ -130,5 +131,6 @@ echo '<div class="wrapper">';
 
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/categorias.js"></script>
 </body>
 </html>

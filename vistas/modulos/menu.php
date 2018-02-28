@@ -16,6 +16,13 @@
       </li>
 
       <li>
+        <a href="categorias">
+          <i class="fa fa-th"></i>
+          <span>Categorias</span>
+        </a>
+      </li>
+
+      <li>
         <a href="clientes">
           <i class="fa fa-users"></i>
           <span>Clientes</span>
