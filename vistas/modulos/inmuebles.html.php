@@ -24,7 +24,7 @@
 
       <div class="box-header with-border">
 
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregaInmueble">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarInmueble">
 
           Agregar inmueble
 
@@ -34,7 +34,7 @@
 
       <div class="box-body">
 
-       <table class="table table-bordered table-striped dt-responsive tablas">
+       <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
 
         <thead>
 
@@ -49,7 +49,7 @@
            <th>Ciudad</th>
            <th>Estado</th>
            <th>Valor Comercial</th>
-           <th>Valor Canon Arrendamiento</th>
+           <th>Canon Arrendamiento</th>
            <th>Agregado</th>
            <th>Acciones</th>
 
@@ -61,7 +61,7 @@
 
           <tr>
             <td>1</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>Apartamento</td>
             <td>20C-1654659132</td>
             <td>Sonia Constanza Laverde</td>
@@ -75,7 +75,7 @@
 
               <div class="btn-group">
 
-                <button class="btn btn-warning"><i class="fa fa-eye"></i></button>
+                <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
 
                 <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
 
@@ -89,7 +89,7 @@
 
           <tr>
             <td>1</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>Apartamento</td>
             <td>20C-1654659132</td>
             <td>Sonia Constanza Laverde</td>
@@ -103,7 +103,7 @@
 
               <div class="btn-group">
 
-                <button class="btn btn-warning"><i class="fa fa-eye"></i></button>
+                <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
 
                 <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
 
@@ -118,7 +118,7 @@
 
           <tr>
             <td>1</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>Apartamento</td>
             <td>20C-1654659132</td>
             <td>Sonia Constanza Laverde</td>
@@ -132,7 +132,7 @@
 
               <div class="btn-group">
 
-                <button class="btn btn-warning"><i class="fa fa-eye"></i></button>
+                <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
 
                 <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
 
@@ -143,8 +143,6 @@
             </td>
 
           </tr>
-
-
 
         </tbody>
 
@@ -159,10 +157,10 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR USUARIO
+MODAL AGREGAR INMUEBLE
 ======================================-->
 
-<div id="modalAgregarUsuario" class="modal fade" role="dialog">
+<div id="modalAgregarInmueble" class="modal fade" role="dialog">
 
   <div class="modal-dialog">
 
@@ -178,7 +176,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar usuario</h4>
+          <h4 class="modal-title">Agregar inmueble</h4>
 
         </div>
 
@@ -190,65 +188,23 @@ MODAL AGREGAR USUARIO
 
           <div class="box-body">
 
-            <!-- ENTRADA PARA EL NOMBRE -->
+            <!-- ENTRADA PARA SELECCIONAR CATEGORIA -->
 
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" required>
+                <select class="form-control input-lg" name="nuevaCategoria">
 
-              </div>
+                  <option value="">Selecionar categoría</option>
 
-            </div>
+                  <option value="Administrador">Apartamento</option>
 
-            <!-- ENTRADA PARA EL USUARIO -->
+                  <option value="Especial">Casa</option>
 
-             <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar usuario" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA LA CONTRASEÑA -->
-
-             <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-
-                <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar contraseña" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
-
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-
-                <select class="form-control input-lg" name="nuevoPerfil">
-
-                  <option value="">Selecionar perfil</option>
-
-                  <option value="Administrador">Administrador</option>
-
-                  <option value="Especial">Especial</option>
-
-                  <option value="Vendedor">Vendedor</option>
+                  <option value="Vendedor">Local</option>
 
                 </select>
 
@@ -256,17 +212,138 @@ MODAL AGREGAR USUARIO
 
             </div>
 
+
+            <!-- ENTRADA PARA MATRICULA -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
+
+                <input type="text" class="form-control input-lg" name="nuevaMatricula" placeholder="Ingresar No. de matricula">
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA DIRECCIÓN -->
+
+             <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+
+                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA CIUDAD -->
+
+             <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+
+                <input type="text" class="form-control input-lg" name="nuevaCiudad" placeholder="Ingresar ciudad" required>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA SELECCIONAR PROPIETARIO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+
+                <select class="form-control input-lg" name="nuevoCliente">
+
+                  <option value="">Selecione el propietario</option>
+
+                  <option value="Administrador">Sonia Constanza Laverde</option>
+
+                  <option value="Especial">Carlos Andres Diaz</option>
+
+                  <option value="Vendedor">Jose Maria Cordoba</option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA VALOR COMERCIAL -->
+
+            <div class="form-group row">
+
+              <div class="col-xs-6">
+
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+
+                  <input type="number" class="form-control input-lg" name="nuevoValorComercial" min="0" placeholder="Valor comercial" required>
+
+                </div>
+
+              </div>
+
+
+              <!-- ENTRADA PARA CANON DE ARRENDAMIENTO -->
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                  <input type="number" class="form-control input-lg" name="nuevoValorComercial" min="0" placeholder="Canon Arrendamiento" required>
+                </div>
+
+                <br>
+
+                <!-- CHECKBOX PARA PORCENTAJE -->
+
+                <div class="col-xs-6">
+
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="minimal porcentaje" checked>
+                      Comisión
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ENTRADA PARA PORCENTAJE -->
+
+                <div class="col-xs-6" style="padding: 0">
+                  <div class="input-group">
+                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="10" required>
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
             <!-- ENTRADA PARA SUBIR FOTO -->
 
              <div class="form-group">
 
-              <div class="panel">SUBIR FOTO</div>
+              <div class="panel">SUBIR IMAGEN</div>
 
-              <input type="file" id="nuevaFoto" name="nuevaFoto">
+              <input type="file" id="nuevaImagen" name="nuevaImagen">
 
-              <p class="help-block">Peso máximo de la foto 200 MB</p>
+              <p class="help-block">Peso máximo de la foto 5MB</p>
 
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail" width="100px">
 
             </div>
 
@@ -282,7 +359,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+          <button type="submit" class="btn btn-primary">Guardar inmueble</button>
 
         </div>
 
