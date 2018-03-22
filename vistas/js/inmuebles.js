@@ -124,3 +124,16 @@ $(".sorting").click(function(){
     cargarImagenes();
 
 })
+
+
+/* =================================================
+CAPTURANDO LA CATEGORIA PARA ASIGNAR CODIGO DEL INMUEBLE
+====================================================*/
+
+
+$("#nuevaCategoria").change(function(){
+
+  var idCategoria = $(this).val();
+
+  
+})

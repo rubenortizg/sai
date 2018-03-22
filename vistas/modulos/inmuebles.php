@@ -107,22 +107,28 @@ MODAL AGREGAR INMUEBLE
 
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
 
-                <select class="form-control input-lg" name="nuevaCategoria">
+                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" required>
 
                   <option value="">Selecionar categoría</option>
 
-                  <option value="Administrador">Apartamento</option>
+                  <?php
 
-                  <option value="Especial">Casa</option>
+                  $item = null;
+                  $valor = null;
 
-                  <option value="Vendedor">Local</option>
+                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+                    echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                  }
+
+                   ?>
 
                 </select>
 
               </div>
 
             </div>
-
 
             <!-- ENTRADA PARA MATRICULA -->
 
