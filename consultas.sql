@@ -1,19 +1,22 @@
-CREATE DATABASE `ai` COLLATE utf8_spanish_ci;
+/* NUEVA VERSION SAI */
 
-CREATE TABLE `ai`. `usuarios`(
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `usuario` VARCHAR(100) NOT NULL ,
-  `password` VARCHAR(300) NOT NULL ,
-  `nombre` VARCHAR(100) NOT NULL ,
-  `correo` VARCHAR(300) NOT NULL ,
-  `perfil` VARCHAR(100) NOT NULL ,
-  `foto` VARCHAR(100) NOT NULL ,
-  `estado` INT(11) NOT NULL ,
-  `ultimo_login` datetime NOT NULL ,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) ,
-  UNIQUE (`usuario`) ,
-  UNIQUE (`identificacion`)) ENGINE = InnoDB;
+CREATE DATABASE `sai` COLLATE utf8_spanish_ci;
+
+CREATE TABLE `sai`. `usuarios` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `usuario` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `password` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+ `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `correo` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+ `perfil` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `estado` int(11) NOT NULL,
+ `ultimo_login` datetime NOT NULL,
+ `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `usuario` (`usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
+
 
 INSERT INTO usuarios (id, usuario, password, nombre, correo, perfil, foto, estado, ultimo_login, fecha)
 VALUES (
@@ -29,47 +32,39 @@ VALUES (
   NULL
   );
 
-  CREATE TABLE `ai`.`categorias` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT ,
-    `categoria` VARCHAR(100) NOT NULL ,
-    `fecha` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`) ,
-    UNIQUE (`categoria`)) ENGINE = InnoDB;
+CREATE TABLE `sai`.`categorias` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `categoria` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `categoria` (`categoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
 
 
-  INSERT INTO usuarios (id, usuario, password, identificacion, tipoid, upnombre, usnombre, upapellido, usapellido, correo, cargo)
-  VALUES (
-    NULL ,
-    'german' ,
-    'adc2f381a19ec61098cf133f02aa300b41ac7c49979997f560a14ba612240f694022ab94433deb60101067175cc9ed015b1d248508d96262954f2a81e545e357' ,
-    '80495329' ,
-    'Cedula Ciudadanía' ,
-    'German' ,
-    '' ,
-    'Gutierrez' ,
-    'Torres' ,
-    'gygasociadosltda@hotmail.com' ,
-    'Usuario'
-    );
+CREATE TABLE `inmuebles` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `id_categoria` int(11) NOT NULL,
+ `id_propietario` int(11) NOT NULL,
+ `id_usuario` int(11) NOT NULL,
+ `imagen` text COLLATE utf8_spanish_ci NOT NULL,
+ `matricula` text COLLATE utf8_spanish_ci NOT NULL,
+ `direccion` text COLLATE utf8_spanish_ci DEFAULT NULL,
+ `ciudad` text COLLATE utf8_spanish_ci DEFAULT NULL,
+ `estado` int(11) NOT NULL,
+ `valor_comercial` float DEFAULT NULL,
+ `canon_arrendamiento` float NOT NULL,
+ `descripcion` text COLLATE utf8_spanish_ci,
+ `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
 
 
-    INSERT INTO usuarios (id, usuario, password, identificacion, tipoid, upnombre, usnombre, upapellido, usapellido, correo, cargo)
-    VALUES (
-      NULL ,
-      'gloria' ,
-      '6508956845491d639ed7c7cb821bad6ad7600b5bf896a7c214b95199e1d9da11dfd983bae627d9c44dc0ac8825660aff9f856df0d1b3fb1eb383ea030cbd895d' ,
-      '39703768' ,
-      'Cedula Ciudadanía' ,
-      'Gloria' ,
-      'Cecilia' ,
-      'Pulido' ,
-      'Fetecua' ,
-      'gygasociadosltda@hotmail.com' ,
-      'Usuario'
-      );
 
 
-CREATE TABLE `ai`.`clientes` (
+/* VERSION ANTERIOR AI */
+
+
+CREATE TABLE `sai`.`clientes` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `identificacion` INT(11) NOT NULL ,
   `tipoid` VARCHAR(100) NOT NULL ,
@@ -91,16 +86,20 @@ CREATE TABLE `ai`.`clientes` (
   PRIMARY KEY (`id`),
   UNIQUE (`identificacion`)) ENGINE = InnoDB;
 
+
 CREATE TABLE `ai`.`inmuebles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `id_categoria` INT(11) NOT NULL ,
+  `id_propietario` INT(11) NOT NULL ,
+  `id_usuario` INT(11) NOT NULL ,
+  `imagen` TEXT NOT NULL ,
   `matricula` VARCHAR(100) NOT NULL ,
   `tipo` VARCHAR(100) NOT NULL ,
   `direccion` VARCHAR(200) NULL ,
   `ciudad` VARCHAR(100) NULL ,
   `valor` INT(11) NULL ,
   `descripcion` TEXT NULL ,
-  `idpropietario` INT(11) NOT NULL ,
-  `idusuario` INT(11) NOT NULL ,
+
   PRIMARY KEY (`id`),
   UNIQUE (`matricula`)) ENGINE = InnoDB;
 
