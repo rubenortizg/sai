@@ -12,6 +12,11 @@ var table = $(".tablaInmuebles").DataTable({
       "defaultContent":'<img class="img-thumbnail imgTabla" width="40px">'
     },
     {
+      "targets":-5,
+      "data": null,
+      "defaultContent":'<button class="btn btn-success btn-xs">Arrendado</button>'
+    },
+    {
       "targets":-1,
       "data": null,
       "defaultContent":'<div class="btn-group"><button class="btn btn-primary btn-sm btnDetalleInmueble" idInmueble><i class="fa fa-eye"></i></button><button class="btn btn-warning btn-sm btnEditarInmueble" idInmueble><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btnEliminarInmueble" idInmueble><i class="fa fa-times"></i></button></div>'
