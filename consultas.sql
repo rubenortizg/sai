@@ -47,18 +47,18 @@ CREATE TABLE `inmuebles` (
  `id_propietario` int(11) NOT NULL,
  `id_usuario` int(11) NOT NULL,
  `imagen` text COLLATE utf8_spanish_ci NOT NULL,
+ `codigo` text COLLATE utf8_spanish_ci NOT NULL,
  `matricula` text COLLATE utf8_spanish_ci NOT NULL,
- `direccion` text COLLATE utf8_spanish_ci DEFAULT NULL,
- `ciudad` text COLLATE utf8_spanish_ci DEFAULT NULL,
+ `direccion` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `ciudad` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
  `estado` int(11) NOT NULL,
  `valor_comercial` float DEFAULT NULL,
  `canon_arrendamiento` float NOT NULL,
+ `comision` float NOT NULL,
  `descripcion` text COLLATE utf8_spanish_ci,
  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
-
-
 
 
 /* VERSION ANTERIOR AI */

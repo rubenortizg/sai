@@ -130,6 +130,20 @@ MODAL AGREGAR INMUEBLE
 
             </div>
 
+            <!-- ENTRADA PARA CODIGO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-qrcode"></i></span>
+
+                <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Codigo del Inmueble" readonly>
+
+              </div>
+
+            </div>
+
             <!-- ENTRADA PARA MATRICULA -->
 
             <div class="form-group">
@@ -139,6 +153,30 @@ MODAL AGREGAR INMUEBLE
                 <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nuevaMatricula" placeholder="Ingresar No. de matricula">
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA SELECCIONAR PROPIETARIO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+
+                <select class="form-control input-lg" name="nuevoCliente" required>
+
+                  <option value="">Selecione el propietario</option>
+
+                  <option value="1">Sonia Constanza Laverde</option>
+
+                  <option value="2">Carlos Andres Diaz</option>
+
+                  <option value="3">Jose Maria Cordoba</option>
+
+                </select>
 
               </div>
 
@@ -172,63 +210,55 @@ MODAL AGREGAR INMUEBLE
 
             </div>
 
-            <!-- ENTRADA PARA SELECCIONAR PROPIETARIO -->
+            <!-- ENTRADA PARA VALOR COMERCIAL -->
 
-            <div class="form-group">
+            <div class="form-group row" style="margin-bottom: 0">
 
-              <div class="input-group">
+              <div class="form-group col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                  <input type="text" class="form-control input-lg" id="nuevoValorComercial" name="nuevoValorComercial" placeholder="Valor comercial" valorComercial>
+                </div>
+              </div>
 
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-
-                <select class="form-control input-lg" name="nuevoCliente">
-
-                  <option value="">Selecione el propietario</option>
-
-                  <option value="Administrador">Sonia Constanza Laverde</option>
-
-                  <option value="Especial">Carlos Andres Diaz</option>
-
-                  <option value="Vendedor">Jose Maria Cordoba</option>
-
-                </select>
-
+              <!-- ENTRADA PARA CANON DE ARRENDAMIENTO -->
+              <div class="form-group col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                  <input type="text" class="form-control input-lg" id="nuevoValorArrendamiento" name="nuevoValorArrendamiento" placeholder="Canon Arrendamiento" valorArrendamiento>
+                </div>
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA VALOR COMERCIAL -->
-
             <div class="form-group row">
 
-              <div class="col-xs-6">
-
+              <!-- ENTRADA PARA ESTADO INMUEBLE -->
+              <div class="form-group col-md-6">
                 <div class="input-group">
 
-                  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-get-pocket"></i></span>
+                  <select class="form-control input-lg" name="nuevoEstado" required>
 
-                  <input type="number" class="form-control input-lg" name="nuevoValorComercial" min="0" placeholder="Valor comercial" required>
+                    <option value="">Selecione el Estado</option>
+                    <option value="1">En venta</option>
+                    <option value="2">Para arrendar</option>
+                    <option value="3">Arrendado</option>
+                    <option value="4">Vendido</option>
+
+                  </select>
 
                 </div>
-
               </div>
 
-
-              <!-- ENTRADA PARA CANON DE ARRENDAMIENTO -->
-              <div class="col-xs-6">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                  <input type="number" class="form-control input-lg" name="nuevoValorComercial" min="0" placeholder="Canon Arrendamiento" required>
-                </div>
-
-                <br>
+              <div class="form-group col-md-6">
 
                 <!-- CHECKBOX PARA PORCENTAJE -->
-
-                <div class="col-xs-6">
+                <div class="col-xs-6" style="padding-top: 10px">
 
                   <div class="form-group">
                     <label>
-                      <input type="checkbox" class="minimal porcentaje" checked>
+                      <input type="checkbox" class="minimal" checked>
                       Comisión
                     </label>
                   </div>
@@ -238,7 +268,7 @@ MODAL AGREGAR INMUEBLE
 
                 <div class="col-xs-6" style="padding: 0">
                   <div class="input-group">
-                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="10" required>
+                    <input type="number" class="form-control input-lg" name="nuevoPorcentaje" min="0" value="10" required>
                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                   </div>
                 </div>
@@ -281,6 +311,13 @@ MODAL AGREGAR INMUEBLE
         </div>
 
       </form>
+
+      <?php
+
+        $crearInmueble = new ControladorInmuebles();
+        $crearInmueble -> ctrCrearInmueble();
+
+       ?>
 
     </div>
 

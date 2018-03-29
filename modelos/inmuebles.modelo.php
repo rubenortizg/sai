@@ -12,7 +12,7 @@ class ModeloInmuebles {
 
     if ($item != null) {
 
-      $sql ="SELECT * FROM $tabla WHERE $item = :$item";
+      $sql ="SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC";
       $stmt = Conexion::conectar()-> prepare($sql);
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
@@ -31,6 +31,45 @@ class ModeloInmuebles {
     }
 
 		$stmt -> close();
+		$stmt = null;
+
+  }
+
+
+  /* =====================================
+  REGISTRO INMUEBLES
+  ====================================== */
+
+  static public function mdlIngresarInmueble($tabla, $datos){
+
+    $sql ="INSERT INTO $tabla(id_categoria, id_propietario, id_usuario, imagen, codigo, matricula, direccion, ciudad, estado, valor_comercial, canon_arrendamiento, comision) VALUES (:id_categoria, :id_propietario, :id_usuario, :imagen, :codigo, :matricula, :direccion, :ciudad, :estado, :valor_comercial, :canon_arrendamiento, :comision)";
+
+    $stmt = Conexion::conectar()-> prepare($sql);
+
+		$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_propietario", $datos["id_propietario"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
+		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
+		$stmt->bindParam(":matricula", $datos["matricula"], PDO::PARAM_STR);
+    $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+    $stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+    $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+    $stmt->bindParam(":valor_comercial", $datos["valor_comercial"], PDO::PARAM_STR);
+    $stmt->bindParam(":canon_arrendamiento", $datos["canon_arrendamiento"], PDO::PARAM_STR);
+    $stmt->bindParam(":comision", $datos["comision"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
 		$stmt = null;
 
   }

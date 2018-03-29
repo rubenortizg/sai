@@ -4,7 +4,7 @@
 
 var table = $(".tablaInmuebles").DataTable({
 
-  "ajax":"ajax/inmuebles.ajax.php",
+  "ajax":"ajax/datatable-inmuebles.ajax.php",
   "columnDefs": [
     {
       "targets":-11,
@@ -135,5 +135,95 @@ $("#nuevaCategoria").change(function(){
 
   var idCategoria = $(this).val();
 
-  
+  var datos =new FormData();
+  datos.append("idCategoria",idCategoria);
+
+  $.ajax({
+
+    url:"ajax/inmuebles.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+    success:function(respuesta){
+
+      if(!respuesta){
+
+        var nuevoCodigo = idCategoria + "001";
+        $("#nuevoCodigo").val(nuevoCodigo);
+
+      } else {
+
+        var nuevoCodigo = Number(respuesta["codigo"]) + 1;
+        $("#nuevoCodigo").val(nuevoCodigo);
+
+      }
+
+
+    }
+
+  })
+
+
 })
+
+/* ===============================================================================
+FORMATEANDO LOS MILES EN LA ENTRADA DE VALOR DE INMUEBLE
+==================================================================================*/
+
+$("#nuevoValorComercial").on({
+    "change": function (event) {
+        $(event.target).select();
+    },
+    "keyup": function (event) {
+        $(event.target).val(function (index, value ) {
+          var valor = Number(value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g,""));
+          $('#nuevoValorComercial').attr('valorComercial', valor);
+          return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+    },
+    "focusin": function (event) {
+        $(event.target).val(function (index, value ) {
+          var valor = Number(value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g,""));
+          $('#nuevoValorComercial').attr('valorComercial', valor);
+          return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+    },
+    "focusout": function (event){
+        var valor = $(this).attr('valorComercial');
+        $('#nuevoValorComercial').val(valor);
+    }
+});
+
+
+
+/* ===============================================================================
+FORMATEANDO LOS MILES EN LA ENTRADA DE CANON DE ARRENDAMIENTO
+==================================================================================*/
+
+
+$("#nuevoValorArrendamiento").on({
+    "change": function (event) {
+        $(event.target).select();
+    },
+    "keyup": function (event) {
+        $(event.target).val(function (index, value ) {
+          var valor = Number(value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g,""));
+          $('#nuevoValorArrendamiento').attr('valorArrendamiento', valor);
+          return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+    },
+    "focusin": function (event) {
+        $(event.target).val(function (index, value ) {
+          var valor = Number(value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g,""));
+          $('#nuevoValorArrendamiento').attr('valorArrendamiento', valor);
+          return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+    },
+    "focusout": function (event){
+        var valor = $(this).attr('valorArrendamiento');
+        $('#nuevoValorArrendamiento').val(valor);
+    }
+});
