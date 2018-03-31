@@ -47,7 +47,7 @@
            <th>Propietario</th>
            <th>Dirección</th>
            <th>Ciudad</th>
-           <th>Estado</th>
+           <th style="width:120px">Estado</th>
            <th>Valor Comercial</th>
            <th>Canon Arrendamiento</th>
            <th>Agregado</th>

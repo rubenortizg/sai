@@ -14,7 +14,7 @@ var table = $(".tablaInmuebles").DataTable({
     {
       "targets":-5,
       "data": null,
-      "defaultContent":'<button class="btn btn-success btn-xs">Arrendado</button>'
+      "defaultContent":'<button class="btn btn-xs estadoBoton"></button>'
     },
     {
       "targets":-1,
@@ -79,11 +79,39 @@ function cargarImagenes(){
 }
 
 /* =================================================
+FUNCION PARA CARGAR ESTADOS
+====================================================*/
+
+function cargarEstados(){
+
+  var estadoBoton = $(".estadoBoton");
+
+  for (var i = 0; i < estadoBoton.length; i++) {
+
+    var data = table.row($(estadoBoton[i]).parents("tr")).data();
+
+
+    $(estadoBoton[i]).val(data[7]);
+    $(estadoBoton[i]).html(data[7]);
+
+    if (data[7] == "Arrendado" || data[7] == "Vendido") {
+      $(estadoBoton[i]).addClass('btn-success');
+    } else if (data[7] == "Para Arrendar" || data[7] == "En Venta") {
+      $(estadoBoton[i]).addClass('btn-warning');
+    }
+
+  }
+
+}
+
+
+/* =================================================
 CARGAR IMAGENES PRIMER LISTADO
 ====================================================*/
 
 
 setTimeout(cargarImagenes,2000);
+setTimeout(cargarEstados,2000);
 
 /* =================================================
 CARGAR IMAGENES PAGINADOR
@@ -92,6 +120,7 @@ CARGAR IMAGENES PAGINADOR
 $(".dataTables_paginate").click(function(){
 
   cargarImagenes();
+  cargarEstados();
 
 })
 
@@ -106,6 +135,7 @@ $("input[aria-controls='DataTables_Table_0']").focus(function(){
     event.preventDefault();
 
     cargarImagenes();
+    cargarEstados();
 
   })
 })
@@ -117,6 +147,7 @@ CARGAR IMAGENES FILTRO CANTIDAD
 $("select[name='DataTables_Table_0_length']").change(function(){
 
     cargarImagenes();
+    cargarEstados();
 
 })
 
@@ -127,6 +158,7 @@ CARGAR IMAGENES FILTRO ORDENAR
 $(".sorting").click(function(){
 
     cargarImagenes();
+    cargarEstados();
 
 })
 
