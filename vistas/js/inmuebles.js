@@ -236,9 +236,7 @@ $("#nuevoValorComercial").on({
 
 
 
-/* ===============================================================================
-FORMATEANDO LOS MILES EN LA ENTRADA DE CANON DE ARRENDAMIENTO
-==================================================================================*/
+
 
 
 $("#nuevoValorArrendamiento").on({
@@ -264,3 +262,19 @@ $("#nuevoValorArrendamiento").on({
         $('#nuevoValorArrendamiento').val(valor);
     }
 });
+
+/* ===============================================================================
+HABILITANDO CAMBIO DEL PORCENTAJE DE LA COMISION
+==================================================================================*/
+
+$(".comision").on("ifUnchecked", function(){
+
+  $("#nuevoPorcentaje").prop("readonly", true);
+
+})
+
+$(".comision").on("ifChecked", function(){
+
+  $("#nuevoPorcentaje").prop("readonly", false);
+
+})

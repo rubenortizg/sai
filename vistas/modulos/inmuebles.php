@@ -47,7 +47,7 @@
            <th>Propietario</th>
            <th>Dirección</th>
            <th>Ciudad</th>
-           <th style="width:120px">Estado</th>
+           <th>Estado</th>
            <th>Valor Comercial</th>
            <th>Canon Arrendamiento</th>
            <th>Agregado</th>
@@ -241,10 +241,10 @@ MODAL AGREGAR INMUEBLE
                   <select class="form-control input-lg" name="nuevoEstado" required>
 
                     <option value="">Selecione el Estado</option>
-                    <option value="1">En venta</option>
-                    <option value="2">Para arrendar</option>
-                    <option value="3">Arrendado</option>
-                    <option value="4">Vendido</option>
+                    <option value="En Venta">En Venta</option>
+                    <option value="Para Arrendar">Para Arrendar</option>
+                    <option value="Arrendado">Arrendado</option>
+                    <option value="Vendido">Vendido</option>
 
                   </select>
 
@@ -258,7 +258,7 @@ MODAL AGREGAR INMUEBLE
 
                   <div class="form-group">
                     <label>
-                      <input type="checkbox" class="minimal" checked>
+                      <input type="checkbox" class="minimal comision" unchecked>
                       Comisión
                     </label>
                   </div>
@@ -268,7 +268,7 @@ MODAL AGREGAR INMUEBLE
 
                 <div class="col-xs-6" style="padding: 0">
                   <div class="input-group">
-                    <input type="number" class="form-control input-lg" name="nuevoPorcentaje" min="0" value="10" required>
+                    <input type="number" class="form-control input-lg" id="nuevoPorcentaje" name="nuevoPorcentaje" min="0" value="10" required readonly>
                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                   </div>
                 </div>
