@@ -42,6 +42,7 @@
 
            <th style="width:10px">#</th>
            <th>Imagen</th>
+           <th>Codigo</th>
            <th>Categoría</th>
            <th>No. de matricula</th>
            <th>Propietario</th>
@@ -286,11 +287,11 @@ MODAL AGREGAR INMUEBLE
 
               <div class="panel">SUBIR IMAGEN</div>
 
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
+              <input type="file" class="nuevaImagen" name="nuevaImagen">
 
               <p class="help-block">Peso máximo de la foto 5MB</p>
 
-              <img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
             </div>
 
@@ -324,3 +325,252 @@ MODAL AGREGAR INMUEBLE
   </div>
 
 </div>
+
+
+<!--=====================================
+MODAL EDITAR INMUEBLE
+======================================-->
+
+<div id="modalEditarInmueble" class="modal fade" role="dialog">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form role="form" method="post" enctype="multipart/form-data">
+
+        <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+        <div class="modal-header" style="background:#3c8dbc; color:white">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title">Editar inmueble</h4>
+
+        </div>
+
+        <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- ENTRADA PARA SELECCIONAR CATEGORIA -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+                <select class="form-control input-lg" name="editarCategoria"  readonly required>
+
+                  <option id="editarCategoria"></option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA CODIGO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-qrcode"></i></span>
+
+                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA MATRICULA -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
+
+                <input type="text" class="form-control input-lg" id="editarMatricula" name="editarMatricula">
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA SELECCIONAR PROPIETARIO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+
+                <select class="form-control input-lg" name="editarCliente" required>
+
+                  <option id="editarCliente"></option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA DIRECCIÓN -->
+
+             <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+
+                <input type="text" class="form-control input-lg" id="editarDireccion" name="editarDireccion" required>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA CIUDAD -->
+
+             <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+
+                <input type="text" class="form-control input-lg"  id="editarCiudad" name="editarCiudad" required>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA VALOR COMERCIAL -->
+
+            <div class="form-group row" style="margin-bottom: 0">
+
+              <div class="form-group col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                  <input type="text" class="form-control input-lg" id="editarValorComercial" name="editarValorComercial" valorComercial>
+                </div>
+              </div>
+
+              <!-- ENTRADA PARA CANON DE ARRENDAMIENTO -->
+              <div class="form-group col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                  <input type="text" class="form-control input-lg" id="editarValorArrendamiento" name="editarValorArrendamiento" valorArrendamiento>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group row">
+
+              <!-- ENTRADA PARA ESTADO INMUEBLE -->
+              <div class="form-group col-md-6">
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-get-pocket"></i></span>
+                  <select class="form-control input-lg" name="editarEstado" required>
+
+                    <option id="editarEstado"></option>
+                    <option value="En Venta">En Venta</option>
+                    <option value="Para Arrendar">Para Arrendar</option>
+                    <option value="Arrendado">Arrendado</option>
+                    <option value="Vendido">Vendido</option>
+
+                  </select>
+
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+
+                <!-- CHECKBOX PARA PORCENTAJE -->
+                <div class="col-xs-6" style="padding-top: 10px">
+
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="minimal comision" unchecked>
+                      Comisión
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ENTRADA PARA PORCENTAJE -->
+
+                <div class="col-xs-6" style="padding: 0">
+                  <div class="input-group">
+                    <input type="number" class="form-control input-lg" id="editarPorcentaje" name="editarPorcentaje" min="0" value="10" required readonly>
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <!-- ENTRADA PARA SUBIR FOTO -->
+
+             <div class="form-group">
+
+              <div class="panel">SUBIR IMAGEN</div>
+
+              <input type="file" class="nuevaImagen" name="editarImagen">
+
+              <p class="help-block">Peso máximo de la foto 5MB</p>
+
+              <img src="vistas/img/inmuebles/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+
+              <input type="hidden" name="imagenActual" id="imagenActual">
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+          <button type="submit" class="btn btn-primary">Actualizar inmueble</button>
+
+        </div>
+
+      </form>
+
+      <?php
+
+        $editarInmueble = new ControladorInmuebles();
+        $editarInmueble -> ctrEditarInmueble();
+
+       ?>
+
+    </div>
+
+  </div>
+
+</div>
+
+<?php
+
+$eliminarInmueble = new ControladorInmuebles();
+$eliminarInmueble -> ctrEliminarInmueble();
+
+?>

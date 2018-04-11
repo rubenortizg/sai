@@ -29,6 +29,22 @@ class AjaxInmuebles{
 
   }
 
+  /* =====================================
+    EDITAR PRODUCTO
+  ==========================================*/
+
+  public $idInmueble;
+
+  public function ajaxEditarInmueble(){
+
+    $item ="id";
+    $valor = $this->idInmueble;
+
+    $respuesta = ControladorInmuebles::ctrMostrarInmuebles($item,$valor);
+
+    echo json_encode($respuesta);
+  }
+
 }
 
 /* =====================================
@@ -40,5 +56,17 @@ if (isset($_POST["idCategoria"])) {
   $codigoInmueble = new AjaxInmuebles();
   $codigoInmueble -> idCategoria =$_POST["idCategoria"];
   $codigoInmueble -> ajaxCrearCodigoInmueble();
+
+}
+
+/* =====================================
+  EDITAR PRODUCTO
+==========================================*/
+
+if (isset($_POST["idInmueble"])) {
+
+  $editarInmueble = new AjaxInmuebles();
+  $editarInmueble -> idInmueble =$_POST["idInmueble"];
+  $editarInmueble -> ajaxEditarInmueble();
 
 }

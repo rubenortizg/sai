@@ -43,6 +43,7 @@ class TablaInmuebles{
               echo '[
                   "'.($i+1).'",
                   "'.$inmuebles[$i]["imagen"].'",
+                  "'.$inmuebles[$i]["codigo"].'",
                   "'.$categorias["categoria"].'",
                   "'.$inmuebles[$i]["matricula"].'",
                   "'.$propietarios["nombre"].'",
@@ -60,6 +61,7 @@ class TablaInmuebles{
             echo '[
                 "'.count($inmuebles).'",
                 "'.$inmuebles[count($inmuebles)-1]["imagen"].'",
+                "'.$inmuebles[count($inmuebles)-1]["codigo"].'",
                 "'.$categoriaUltima["categoria"].'",
                 "'.$inmuebles[count($inmuebles)-1]["matricula"].'",
                 "'.$propietarioUltimo["nombre"].'",
