@@ -61,44 +61,32 @@
 
         <tbody>
 
-          <?php
+          <tr>
+            <td>1</td>
+            <td>Cedula de Ciudadania</td>
+            <td>52852154</td>
+            <td>Clara Maria Lopez</td>
+            <td>Calle 152C No. 58C-50 Apto 105</td>
+            <td>Bogotá</td>
+            <td>4541287</td>
+            <td>3002545112</td>
+            <td>cmaria@hotmail.com</td>
+            <td>Bancolombia</td>
+            <td>Cuenta de Ahorros</td>
+            <td>101-6599622-5</td>
+            <td>
 
-            $item = null;
-            $valor = null;
+              <div class="btn-group">
 
-            $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
 
-            foreach ($clientes as $key => $value) {
+                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
 
-              echo '<tr>
-                      <td>'.($key+1).'</td>
-                      <td>'.$value["tipoid"].'</td>
-                      <td>'.$value["identificacion"].'</td>
-                      <td>'.$value["nombre"].'</td>
-                      <td>'.$value["direccion"].'</td>
-                      <td>'.$value["ciudad"].'</td>
-                      <td>'.$value["telfijo"].'</td>
-                      <td>'.$value["celular"].'</td>
-                      <td>'.$value["correo"].'</td>
-                      <td>'.$value["banco"].'</td>
-                      <td>'.$value["tcuenta"].'</td>
-                      <td>'.$value["ncuenta"].'</td>
-                      <td>
+              </div>
 
-                        <div class="btn-group">
+            </td>
 
-                          <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                          <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-                        </div>
-
-                      </td>
-
-                    </tr>';
-
-            }
-          ?>
+          </tr>
 
         </tbody>
 
@@ -152,7 +140,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
 
-                <select class="form-control input-lg" name="nuevoTipoDocumento" required>
+                <select class="form-control input-lg" name="nuevoTipoDocumento">
 
                   <option value="">Tipo de documento</option>
 
@@ -194,7 +182,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" required>
 
               </div>
 
@@ -378,14 +366,6 @@ MODAL AGREGAR CLIENTE
         </div>
 
       </form>
-
-      <?php
-
-        $crearCliente = new ControladorClientes();
-        $crearCliente -> ctrCrearCliente();
-
-
-      ?>
 
     </div>
 

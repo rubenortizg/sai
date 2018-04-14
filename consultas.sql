@@ -41,7 +41,7 @@ CREATE TABLE `sai`.`categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
 
 
-CREATE TABLE `inmuebles` (
+CREATE TABLE `sai`.`inmuebles` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `id_categoria` int(11) NOT NULL,
  `id_propietario` int(11) NOT NULL,
@@ -58,6 +58,26 @@ CREATE TABLE `inmuebles` (
  `descripcion` text COLLATE utf8_spanish_ci,
  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
+
+
+
+CREATE TABLE `sai`.`clientes` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `identificacion` int(11) NOT NULL,
+ `tipoid` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `direccion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `correo` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `telfijo` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `celular` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `ciudad` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `banco` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `tcuenta` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `ncuenta` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+ `idusuario` int(11) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `identificacion` (`identificacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
 
 
