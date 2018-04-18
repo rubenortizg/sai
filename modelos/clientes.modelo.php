@@ -74,5 +74,71 @@ class ModeloClientes {
 
 	}
 
+  /* =====================================
+  EDITAR CLIENTE
+  ====================================== */
+
+  static public function mdlEditarCliente($tabla, $datos){
+
+    $sql ="UPDATE $tabla SET identificacion =:identificacion, tipoid =  :tipoid, nombre = :nombre, direccion = :direccion, correo = :correo, telfijo = :telfijo, celular = :celular, ciudad = :ciudad, banco = :banco, tcuenta = :tcuenta, ncuenta = :ncuenta, idusuario = :idusuario WHERE id = :id";
+
+    $stmt = Conexion::conectar()-> prepare($sql);
+
+    $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":identificacion", $datos["identificacion"], PDO::PARAM_INT);
+		$stmt->bindParam(":tipoid", $datos["tipoid"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+		$stmt->bindParam(":telfijo", $datos["telfijo"], PDO::PARAM_STR);
+    $stmt->bindParam(":celular", $datos["celular"], PDO::PARAM_STR);
+    $stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+    $stmt->bindParam(":banco", $datos["banco"], PDO::PARAM_STR);
+    $stmt->bindParam(":tcuenta", $datos["tcuenta"], PDO::PARAM_STR);
+    $stmt->bindParam(":ncuenta", $datos["ncuenta"], PDO::PARAM_STR);
+    $stmt->bindParam(":idusuario", $datos["idusuario"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+  }
+
+
+  /*=============================================
+  ELIMINAR CLIENTE
+  =============================================*/
+
+  static public function mdlEliminarCliente($tabla, $datos){
+
+    $sql ="DELETE FROM $tabla WHERE id = :id";
+    $stmt = Conexion::conectar()-> prepare($sql);
+
+    $stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+    if($stmt -> execute()){
+
+      return "ok";
+
+    }else{
+
+      return "error";
+
+    }
+
+    $stmt -> close();
+    $stmt = null;
+
+  }
+
 
 }

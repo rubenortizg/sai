@@ -175,7 +175,7 @@ $("#nuevoUsuario").change(function(){
 ELIMINAR USUARIO
 =============================================*/
 
-$(".btnEliminarUsuario").click(function(){
+$(".tablas").on("click", ".btnEliminarUsuario", function(){
 
 	var idUsuario = $(this).attr("idUsuario");
 	var fotoUsuario = $(this).attr("fotoUsuario");

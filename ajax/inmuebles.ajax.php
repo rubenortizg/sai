@@ -66,7 +66,7 @@ if (isset($_POST["idCategoria"])) {
 if (isset($_POST["idInmueble"])) {
 
   $editarInmueble = new AjaxInmuebles();
-  $editarInmueble -> idInmueble =$_POST["idInmueble"];
+  $editarInmueble -> idInmueble = $_POST["idInmueble"];
   $editarInmueble -> ajaxEditarInmueble();
 
 }
