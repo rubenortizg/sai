@@ -51,3 +51,74 @@ $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
 $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
 //Money Euro
 $('[data-mask]').inputmask()
+
+/* =====================================
+  Date Picker
+==========================================*/
+
+$('#datepicker').datepicker({
+  format: 'yyyy-mm-dd',
+  language:'es',
+  todayHighlight: true,
+  autoclose: true
+})
+
+// Fecha inicial la fecha actual
+$('#datepicker').datepicker('update', new Date());
+
+
+/* =====================================
+  //Date range as a button
+==========================================*/
+
+$('#daterange-btn').daterangepicker(
+  {
+    "locale": {
+        "format": "YYYY-MM-DD",
+        "separator": " - ",
+        "applyLabel": "Aplicar",
+        "cancelLabel": "Cancelar",
+        "fromLabel": "Desde",
+        "toLabel": "Hasta",
+        "customRangeLabel": "Especificar",
+        "weekLabel": "W",
+        "daysOfWeek": [
+            "Do",
+            "Lu",
+            "Ma",
+            "Mi",
+            "Ju",
+            "Vi",
+            "Sa"
+        ],
+        "monthNames": [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio<",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        ],
+        "firstDay": 1
+    },
+    ranges   : {
+      'Hoy'       : [moment(), moment()],
+      'Ayer'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Ultimos 7 días' : [moment().subtract(6, 'days'), moment()],
+      'Ultimos 30 días': [moment().subtract(29, 'days'), moment()],
+      'Este mes'  : [moment().startOf('month'), moment().endOf('month')],
+      'Mes pasado'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    startDate: moment().subtract(29, 'days'),
+    endDate  : moment()
+  },
+  function (start, end) {
+    $('#daterange-btn span').html(start.format('YYYY-MM-DD') + ' / ' + end.format('YYYY-MM-DD'))
+  }
+)

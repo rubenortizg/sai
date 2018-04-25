@@ -81,6 +81,31 @@ CREATE TABLE `sai`.`clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
 
 
+CREATE TABLE `sai`.`comprobantes` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `codigo` int(11) NOT NULL,
+ `idusuario` int(11) NOT NULL,
+ `idcliente` int(11) NOT NULL,
+ `fecha` date NOT NULL,
+ `ciudad` text COLLATE utf8_spanish_ci,
+ `conceptos` text COLLATE utf8_spanish_ci NOT NULL,
+ `valorpago` float NOT NULL,
+ `iperiodo` date NOT NULL,
+ `fperiodo` date NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `nrecibo` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
+
+
+CREATE TABLE `sai`.`conceptos` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `concepto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+ `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `concepto` (`concepto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci
+
+
 /* VERSION ANTERIOR AI */
 
 

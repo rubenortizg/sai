@@ -39,6 +39,12 @@ session_start();
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
 
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="vistas/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
 
   <!-- =====================================
     PLUGINS JAVASCRPIT
@@ -76,6 +82,14 @@ session_start();
   <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
+  <!-- date-range-picker -->
+  <script src="vistas/bower_components/moment/min/moment.min.js"></script>
+  <script src="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+  <!-- bootstrap datepicker -->
+  <script src="vistas/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="vistas/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
+
 </head>
 
 <!-- =====================================
@@ -108,10 +122,13 @@ echo '<div class="wrapper">';
     // lista blanca de modulos con URLs amigables
     if ($_GET["ruta"] == "inicio" ||
         $_GET["ruta"] == "usuarios" ||
+        $_GET["ruta"] == "admin" ||
         $_GET["ruta"] == "categorias" ||
+        $_GET["ruta"] == "conceptos" ||
         $_GET["ruta"] == "clientes" ||
         $_GET["ruta"] == "inmuebles" ||
         $_GET["ruta"] == "comprobantes" ||
+        $_GET["ruta"] == "crear-comprobante" ||
         $_GET["ruta"] == "ingresos" ||
         $_GET["ruta"] == "egresos" ||
         $_GET["ruta"] == "salir"){
@@ -144,7 +161,9 @@ echo '<div class="wrapper">';
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/categorias.js"></script>
+<script src="vistas/js/conceptos.js"></script>
 <script src="vistas/js/inmuebles.js"></script>
 <script src="vistas/js/clientes.js"></script>
+<script src="vistas/js/comprobantes.js"></script>
 </body>
 </html>

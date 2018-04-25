@@ -1,17 +1,17 @@
 /*=============================================
-EDITAR CATEGORIA
+EDITAR CONCEPTO
 =============================================*/
 
-$(".tablas").on("click", ".btnEditarCategoria", function(){
+$(".tablas").on("click", ".btnEditarConcepto", function(){
 
-	var idCategoria = $(this).attr("idCategoria");
+	var idConcepto = $(this).attr("idConcepto");
 
 	var datos = new FormData();
-	datos.append("idCategoria", idCategoria);
+	datos.append("idConcepto", idConcepto);
 
 	$.ajax({
 
-		url:"ajax/categorias.ajax.php",
+		url:"ajax/conceptos.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -20,8 +20,8 @@ $(".tablas").on("click", ".btnEditarCategoria", function(){
 		dataType: "json",
 		success: function(respuesta){
 
-			$("#editarCategoria").val(respuesta["categoria"]);
-			$("#idCategoria").val(respuesta["id"]);
+			$("#editarConcepto").val(respuesta["concepto"]);
+			$("#idConcepto").val(respuesta["id"]);
 
 		}
 
@@ -30,21 +30,21 @@ $(".tablas").on("click", ".btnEditarCategoria", function(){
 })
 
 /*=============================================
-REVISAR SI LA CATEGORIA ESTA REGISTRADA
+REVISAR SI EL CONCEPTO ESTA REGISTRADO
 =============================================*/
 
-$("#nuevaCategoria").change(function(){
+$("#nuevoConcepto").change(function(){
 
 	$(".alert").remove();
 
-	var categoria = $(this).val();
+	var concepto = $(this).val();
 
 	var datos = new FormData();
-	datos.append("validarCategoria", categoria);
+	datos.append("validarConcepto", concepto);
 
 	$.ajax({
 
-		url:"ajax/categorias.ajax.php",
+		url:"ajax/conceptos.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -55,8 +55,8 @@ $("#nuevaCategoria").change(function(){
 
 			if (respuesta) {
 
-				$("#nuevaCategoria").parent().before('<div class="alert alert-warning">Esta categoría ya existe en la base de datos</div>');
-				$("#nuevaCategoria").val("");
+				$("#nuevoConcepto").parent().before('<div class="alert alert-warning">Este concepto ya existe en la base de datos</div>');
+				$("#nuevoConcepto").val("");
 
 
 			}
@@ -67,28 +67,28 @@ $("#nuevaCategoria").change(function(){
 })
 
 /*=============================================
-ELIMINAR CATEGORIA
+ELIMINAR CONCEPTO
 =============================================*/
 
 
-$(".tablas").on("click", ".btnEliminarCategoria", function(){
+$(".tablas").on("click", ".btnEliminarConcepto", function(){
 
-	var idCategoria = $(this).attr("idCategoria");
+	var idConcepto = $(this).attr("idConcepto");
 
 	swal({
-		title: '¿Esta seguro de borrar la categoria?',
+		title: '¿Esta seguro de borrar el concepto?',
 		text: "¡Si no lo esta puede cancelar la acción! ",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
 		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Si, borrar categoria!'
+		confirmButtonText: 'Si, borrar concepto!'
 	}).then(function(result){
 
 		if (result.value) {
 
-			window.location = "index.php?ruta=categorias&idCategoria="+idCategoria;
+			window.location = "index.php?ruta=conceptos&idConcepto="+idConcepto;
 
 		}
 

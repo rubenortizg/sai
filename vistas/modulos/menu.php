@@ -23,6 +23,13 @@
       </li>
 
       <li>
+        <a href="conceptos">
+          <i class="fa fa-tags"></i>
+          <span>Conceptos</span>
+        </a>
+      </li>
+
+      <li>
         <a href="clientes">
           <i class="fa fa-users"></i>
           <span>Clientes</span>
